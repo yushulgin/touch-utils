@@ -15,6 +15,7 @@ export default function TouchInit(domElement, cbTouchStart, cbTouchMove, cbTouch
     let touch1Idx = 1
 
     function onTouchStart(e) {
+        e.preventDefault();
         if (e?.touches?.length == 2) {
             touchstart = true
             touchend = false
@@ -48,6 +49,7 @@ export default function TouchInit(domElement, cbTouchStart, cbTouchMove, cbTouch
     }
 
     function onTouchEnd(e) {
+        e.preventDefault();
         if (touchstart && e?.touches?.length != 2) {
             touchstart = false
             touchend = true
@@ -58,6 +60,7 @@ export default function TouchInit(domElement, cbTouchStart, cbTouchMove, cbTouch
     }
 
     function onTouchMove(e) {
+        e.preventDefault();
         if (e?.touches?.length == 2) {
 
             let len = Math.sqrt(Math.pow(e.touches[touch0Idx].pageX - e.touches[touch1Idx].pageX, 2) + Math.pow(e.touches[touch0Idx].pageY - e.touches[touch1Idx].pageY, 2))
